@@ -27,12 +27,8 @@ public class Movement : MonoBehaviour
         float v = Input.GetAxis("Vertical") * speed;
 
         movement = new Vector3(h, 0, v);
-        movement = Vector3.ClampMagnitude(movement, speed); //Limits speed
+        movement *= speed;
 
-        movement.y = gravity;
-
-        movement *= Time.deltaTime;
-        movement = transform.TransformDirection(movement);
-        controller.Move(movement);
+        controller.Move(movement * Time.deltaTime);
     }
 }
