@@ -5,10 +5,10 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public float rotSpeed;
-    float x;
-    float y;
+    public float minX;
+    public float maxX;
 
-    public GameObject player;
+    Vector3 rot;
 
     void LateUpdate()
     {
@@ -17,13 +17,14 @@ public class CameraMovement : MonoBehaviour
 
     void CamMove()
     {
-        x += Input.GetAxis("Mouse X") * rotSpeed;
-        y -= Input.GetAxis("Mouse Y") * rotSpeed;
-        y = Mathf.Clamp(y, -35, 80);
+        float x = Input.GetAxis("Mouse X");
+        float y = Input.GetAxis("Mouse Y");
 
-        this.transform.LookAt(player.transform);
+        rot.y += x * rotSpeed * Time.deltaTime;
+        rot.x += y * rotSpeed * Time.deltaTime;
 
-        this.transform.rotation = Quaternion.Euler(y, x, 0);
-        player.transform.rotation = Quaternion.Euler(0, x, 0);
+        rot.x = Mathf.Clamp(rot.x, minX, maxX);
+
+        transform.rotation = Quaternion.Euler(rot.x, rot.y, 0.0f);
     }
 }
