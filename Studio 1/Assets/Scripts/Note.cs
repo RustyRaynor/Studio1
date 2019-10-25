@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Note : MonoBehaviour
 {
-    public Image noteImage;
+    public string text;
+    Vector2 scroll;
 
     public GameObject player;
 
@@ -16,7 +17,7 @@ public class Note : MonoBehaviour
 
     void Start()
     {
-        noteImage.enabled = false;
+
     }
 
     void Update()
@@ -40,7 +41,6 @@ public class Note : MonoBehaviour
         else
         {
             interacting = false;
-            noteImage.enabled = false;
         }
     }
 
@@ -48,7 +48,14 @@ public class Note : MonoBehaviour
     {
         if (interacting)
         {
-            noteImage.enabled = true;
+            scroll = GUILayout.BeginScrollView(scroll, GUILayout.Width(300), GUILayout.Height(300));
+            GUILayout.Label(text);
+
+            if(interacting == false)
+            {
+                GUILayout.EndScrollView();
+            }
+
         }
         else if (distance <= interactDistance)
         {
