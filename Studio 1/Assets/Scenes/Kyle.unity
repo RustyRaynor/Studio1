@@ -546,7 +546,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b756bede9813e4aac24337b295a266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteImage: {fileID: 0}
+  text: "Retard, when used as a verb is to refer to delay or hold back in terms of
+    progress or development, or to be delayed.[1] As a noun, it is considered a dated,
+    offensive and pejorative term when used to refer to a person who has a mental
+    disability.[2] It was previously used as a genuine term in medical contexts, though
+    has since been succeeded with the term \"intellectual disability\" in many laws
+    and documents throughout countries in the world. It is also used as an informal
+    term to refer to a foolish or stupid person, though this informal usage has been
+    viewed by many as controversial, mainly due to confusion to the words' history
+    as a medical term.[3]  The word \"retard\" originally came from Latin, a synonym
+    of \"slow\". It entered the English language in the 15th century, and was used
+    to refer to delaying or holding back in terms of progress or development.[4] The
+    word \"decelerate\" would succeed \"retard\" overtime. \"Retard\" first became
+    known as a medical term in the late 19th and early 20th centuries, when medical
+    texts began to describe children with \"retarded mental development\".[5] Up until
+    around the 1960s, the terms \"moron\", \"idiot\", \"cretin\" and \"imbecile\"
+    were all genuine terms to refer to people with mental intellectual disabilities
+    and low intelligence. These words were discontinued in that form when concerns
+    arose that they were offensive, with \"retard\" and \"retarded\" replacing them.[6]
+    Since then, the terms \"handicapped\" (United States) and \"disabled\" (United
+    Kingdom) have replaced \"retard\" and \"retarded\". In 2010, despite not typically
+    being used in official context, \"mental retardation\" was still written in many
+    of the United States' laws and documents, considered by many to be outdated. Barack
+    Obama replaced the term with \"intellectual disability\" with the approval of
+    Rosa's Law\u2014which would require these laws and documents to phase out the
+    terms with the \"intellectual disability\" term"
   player: {fileID: 688522431}
   interactDistance: 5
 --- !u!65 &1611892928
@@ -621,4 +645,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1815698282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1815698283}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1815698283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815698282}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.6137626, y: 1.5190341, z: -1.5868244}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
