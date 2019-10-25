@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     void AnimationsAndRotations()
     {
+
         if (Input.GetKey(KeyCode.W))
         {
             anim.SetBool("walk", true);
@@ -64,6 +65,22 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             anim.SetBool("walk", false);
+        }
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) == false) 
+        {
+            anim.SetBool("walk left", true);
+        }
+        else
+        {
+            anim.SetBool("walk left", false);
+        }
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) == false)
+        {
+            anim.SetBool("walk right", true);
+        }
+        else
+        {
+            anim.SetBool("walk right", false);
         }
     }
 
