@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject gameMan;
+
+    GameManager game;
     CharacterController controller;
     Animator anim;
 
@@ -21,27 +24,37 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        game = gameMan.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Speed();
-        NormalMovement();
-        AnimationsAndRotations();
+        if (game.pause == false)
+        {
+            Speed();
+            NormalMovement();
+            AnimationsAndRotations();
+        }
     }
 
     void NormalMovement()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.D) == false && Input.GetKey(KeyCode.A) == false)
         {
             if (crouch != true)
             {
                 crouch = true;
+                anim.SetBool("crouch", true);
+                controller.height = 1.3f;
+                controller.center = new Vector3(0, 0.73f, 0);
             }
             else
             {
                 crouch = false;
+                anim.SetBool("crouch", false);
+                controller.height = 1.85f;
+                controller.center = new Vector3(0, 1.01f, 0);
             }
         }
 
@@ -56,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     void AnimationsAndRotations()
     {
-
+        anim.SetFloat("Speed", speed);
         if (Input.GetKey(KeyCode.W))
         {
             anim.SetBool("walk", true);
@@ -66,7 +79,15 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("walk", false);
         }
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) == false) 
+        if (Input.GetKey(KeyCode.S))
+        {
+            anim.SetBool("walk back", true);
+        }
+        else
+        {
+            anim.SetBool("walk back", false);
+        }
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.S) == false) 
         {
             anim.SetBool("walk left", true);
         }
@@ -74,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetBool("walk left", false);
         }
-        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) == false)
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.S) == false)
         {
             anim.SetBool("walk right", true);
         }
@@ -92,12 +113,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
             {
                 speed += 0.1f;
-                if (speed >= 10)
+                if (speed >= 8)
                 {
-                    speed = 10;
+                    speed = 8;
                 }
             }
             else
