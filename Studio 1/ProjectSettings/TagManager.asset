@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - SpikeTrap
+  - Pendulum
   layers:
   - Default
   - TransparentFX

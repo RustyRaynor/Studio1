@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            anim.SetBool("walk", false);
+        
         }
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W) == false) 
         {
