@@ -114,7 +114,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Walk
-  m_Speed: 1
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4965971622984525862}
@@ -731,7 +731,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: xbot
+  m_Name: xbot 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: walk
@@ -1123,7 +1123,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3100369314251171874, guid: c0d829b2d6dce5e4089701f56911e006,
+  m_Motion: {fileID: -5252816984213320552, guid: c949e951177ed9a4eb637940629ec3e7,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -1458,7 +1458,7 @@ BlendTree:
   m_Name: Walk
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: f0470992bb8640047a03d17886b97e20,
+    m_Motion: {fileID: 1827226128182048838, guid: c949e951177ed9a4eb637940629ec3e7,
       type: 3}
     m_Threshold: 2
     m_Position: {x: 0, y: 0}
@@ -1467,7 +1467,7 @@ BlendTree:
     m_DirectBlendParameter: Speed
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -203655887218126122, guid: 4ade84d23d6787440a016fd66ddca413,
+    m_Motion: {fileID: 1827226128182048838, guid: c949e951177ed9a4eb637940629ec3e7,
       type: 3}
     m_Threshold: 8
     m_Position: {x: 0, y: 0}
