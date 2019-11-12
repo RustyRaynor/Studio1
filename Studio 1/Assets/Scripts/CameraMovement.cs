@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour
 
     void CamMove()
     {
-        if (game.pause != true)
+        if (game.state != GameManager.State.pause)
         {
             float x = Input.GetAxis("Mouse X");
             float y = Input.GetAxis("Mouse Y");

@@ -28,14 +28,12 @@ public class CameraCollision : MonoBehaviour
 
     void Update()
     {
-        if (game.pause != true)
-        {
             Vector3 desiredCamPos = transform.parent.TransformPoint(normDir * maxDist);
 
             RaycastHit hit;
             if (Physics.Linecast(transform.parent.position, desiredCamPos, out hit))
             {
-                distance = Mathf.Clamp(hit.distance * 0.9f, minDist, maxDist);
+                distance = Mathf.Clamp(hit.distance, minDist, maxDist);
             }
             else
             {
@@ -43,6 +41,6 @@ public class CameraCollision : MonoBehaviour
             }
 
             transform.localPosition = Vector3.Lerp(transform.localPosition, distance * normDir, Time.deltaTime * smooth);
-        }
+        
     }
 }
