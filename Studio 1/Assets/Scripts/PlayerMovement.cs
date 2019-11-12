@@ -9,8 +9,12 @@ public class PlayerMovement : MonoBehaviour
     GameManager game;
     CharacterController controller;
     Animator anim;
+    PlayerHealth player;
 
     Vector3 move;
+
+    public enum State { alive, pause, dead}
+    public State state;
 
     public Transform cameraRot;
 
@@ -18,23 +22,55 @@ public class PlayerMovement : MonoBehaviour
     float gravity = -9.81f;
 
     bool crouch = false;
+    bool dead = true;
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        player = GetComponent<PlayerHealth>();
         game = gameMan.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (game.pause == false)
+        switch (state)
         {
-            Speed();
-            NormalMovement();
-            AnimationsAndRotations();
+            case State.alive:
+                anim.speed = 1;
+                Speed();
+                NormalMovement();
+                AnimationsAndRotations();
+                break;
+
+            case State.pause:
+                anim.speed = 0;
+                break;
+
+            case State.dead:
+                Dead();
+                break;
+
+            default:
+                break;
+        }
+
+        if (game.state != GameManager.State.pause)
+        {
+            if(player.health <= 0)
+            {
+                state = State.dead;
+            }
+            else
+            {
+                state = State.alive;
+            }
+        }
+        else
+        {
+            state = State.pause;
         }
     }
 
@@ -130,5 +166,15 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    void Dead()
+    {
+        if(dead == true)
+        {
+            anim.SetTrigger("dead");
+            dead = false;
+        }
+        game.state = GameManager.State.gameOver;
     }
 }
