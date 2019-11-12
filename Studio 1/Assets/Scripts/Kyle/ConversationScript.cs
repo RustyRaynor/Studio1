@@ -7,14 +7,13 @@ public class ConversationScript : MonoBehaviour
 {
     public string name;
     public string[] sentences;
-    int line;
+    int line = 0;
     public Text convo;
     public Text nameText;
 
     public GameObject player;
     public GameObject UI;
-
-    public NamesSentences ns;
+    public GameObject button;
 
     public float interactDistance = 5f;
     float distance;
@@ -55,14 +54,21 @@ public class ConversationScript : MonoBehaviour
             UI.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Next();
+        //}
+
+        if (convo.text == sentences[line])
         {
-            Next();
+            button.SetActive(true);
         }
     }
 
     public void Next()
     {
+        button.SetActive(false);
+
         if (interacting == true)
         {  
             if (line < sentences.Length - 1)
@@ -70,16 +76,34 @@ public class ConversationScript : MonoBehaviour
                 {
                     line++;
                     convo.text = "";
-                    convo.text = sentences[line];
+                    //convo.text = sentences[line];
+                    //for (int i = 0; i < sentences.Length; i++)
+                    //{
+                    //    convo.text = convo.text + sentences[i];
+                    //    timeRate = 1.0f;
+                    //}
+                    StartCoroutine(Separate());
                 }
             }
             else
             {
                 interacting = false;
                 UI.SetActive(false);
+                line = 0;
+                convo.text = sentences[line];
+                button.SetActive(false);
             }
         }
     }
+
+   IEnumerator Separate()
+   {
+            foreach (char letter in sentences[line].ToCharArray())
+            {
+                convo.text += letter;
+                yield return new WaitForSeconds(0.05f);
+            }
+   }
 
     private void OnGUI()
     {
