@@ -10,10 +10,8 @@ public abstract class Enemy
 
     public Vector3[] patrolPosition = new Vector3[3];
 
-    Node node;
-
    void Update()
     {
-        node.UpdateBehavior(this);
+        
     }
 }
