@@ -18,12 +18,12 @@ public class Seek : MonoBehaviour
         
     }
 
-   // Vector3 seek()
-   // {
-   //    /* Vector3 desiredVelocity = target.transform.position - transform.position;
-   //     float distance = desiredVelocity.magnitude;
-   //     desiredVelocity = desiredVelocity.Normalize() * MaxVelocity;
-   //     //Vector3 steering = desiredVelocity - currentVelocity;
-   //     return steering;
-   // }*/
+    //Vector3 seek()
+    //{
+    //    Vector3 desiredVelocity = target.transform.position - transform.position;
+    //    float distance = desiredVelocity.magnitude;
+    //    desiredVelocity = desiredVelocity.Normalize() * MaxVelocity;
+    //    Vector3 steering = desiredVelocity - currentVelocity;
+    //    return steering;
+    //}
 }
