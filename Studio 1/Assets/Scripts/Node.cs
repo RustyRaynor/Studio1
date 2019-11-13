@@ -4,12 +4,21 @@ using UnityEngine;
 
 public abstract class Node
 {
-    public enum result { failure, Running, Success };
+   // public enum result
+   // {
+   //     Failure,
+   //     Running,
+   //     Success
+   // }
 
-    public List<Node> list = new List<Node>();
+    public int state;
 
-    public virtual int UpdateBehavior(Enemy context)
+   // public result curResult;
+
+    public List<Node> nList = new List<Node>();
+
+    public virtual int UpdateNode(NewEnemy con)
     {
-        return (int)result.failure;
+        return 0;
     }
 }

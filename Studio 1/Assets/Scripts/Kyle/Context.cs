@@ -15,7 +15,7 @@ public class Context : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        root.UpdateNode(this);
+       // root.UpdateNode(this);
     }
 
     public void SetNode(Node node)
