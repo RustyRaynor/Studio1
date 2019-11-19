@@ -5,19 +5,25 @@ using UnityEngine.UI;
 
 public class Note : MonoBehaviour
 {
-    public string text;
     Vector2 scroll;
 
     public GameObject player;
+    public GameObject UI;
+
+    [TextArea]
+    public string content;
 
     public float interactDistance = 5f;
     float distance;
 
     bool interacting = false;
 
+    public Text noteText;
+
     void Start()
     {
-
+        UI.SetActive(false);
+        noteText.text = content;
     }
 
     void Update()
@@ -31,35 +37,30 @@ public class Note : MonoBehaviour
                 if (interacting)
                 {
                     interacting = false;
+                    UI.SetActive(false);
                 }
                 else
                 {
                     interacting = true;
+                    UI.SetActive(true);
                 }
             }
         }
         else
         {
             interacting = false;
+            UI.SetActive(false);
         }
     }
 
-    void OnGUI()
+    private void OnGUI()
     {
-        if (interacting)
+        if (interacting == false)
         {
-            scroll = GUILayout.BeginScrollView(scroll, GUILayout.Width(300), GUILayout.Height(300));
-            GUILayout.Label(text);
-
-            if(interacting == false)
+            if (distance <= interactDistance)
             {
-                GUILayout.EndScrollView();
+                GUI.TextArea(new Rect(Screen.height / 2, Screen.width / 2, 500, 500), "Press 'E' to read.");
             }
-
-        }
-        else if (distance <= interactDistance)
-        {
-            GUI.TextArea(new Rect(Screen.height / 2, Screen.width / 2, 500, 500), "Press 'E' to read.");
         }
     }
 }
