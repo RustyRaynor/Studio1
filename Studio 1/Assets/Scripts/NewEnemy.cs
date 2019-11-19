@@ -16,6 +16,8 @@ public class NewEnemy : MonoBehaviour
 
     public Collider publicCollider;
 
+    public Animator anim;
+
     Selector sel1;
     Sequence seq1;
     Sequence seq2;
@@ -32,6 +34,7 @@ public class NewEnemy : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         sphere = GetComponent<SphereCollider>();
         sel1 = new Selector();
         seq1 = new Sequence();
