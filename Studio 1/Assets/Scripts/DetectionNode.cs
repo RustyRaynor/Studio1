@@ -29,6 +29,7 @@ public class DetectionNode : Node
                     if (hit.collider.tag == "Player")
                     {
                         Debug.Log("Success");
+                        con.anim.SetBool("detected", true);
                         return 2;
                     }
                 }
@@ -36,12 +37,14 @@ public class DetectionNode : Node
                 {
                     if (hit.collider.tag == "Player")
                     {
+                        con.anim.SetBool("detected", true);
                         return 2;
                     }
                 }
             }
         }
         Debug.Log("Fail");
+        con.anim.SetBool("detected", false);
         return 0;
     }
 }
