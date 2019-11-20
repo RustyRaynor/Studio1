@@ -12,7 +12,7 @@ public class DetectionNode : Node
 
     // Update is called once per frame
 
-    public override int UpdateNode(NewEnemy con)
+    public override int UpdateNode(EnemyAbstract con)
     {
         if (con.playerDetected == true)
         {

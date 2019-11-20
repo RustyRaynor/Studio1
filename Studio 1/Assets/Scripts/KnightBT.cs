@@ -2,22 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewEnemy : MonoBehaviour
+public class KnightBT : EnemyAbstract
 {
-    public float speed;
-    public int attackDamage;
-    public int health;
-
-    public int fieldOfView = 110;
-
-    public SphereCollider sphere;
-
-    public bool playerDetected = false;
-
-    public Collider publicCollider;
-
-    public Animator anim;
-
     Selector sel1;
     Sequence seq1;
     Sequence seq2;
@@ -26,13 +12,8 @@ public class NewEnemy : MonoBehaviour
     ChasingNode chase1;
     DetectionNode detectedBehavior;
 
-    public Vector3[] patrolPosition = new Vector3[3];
-
-    public GameObject player;
-
-    Node node;
-
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         anim = GetComponent<Animator>();
         sphere = GetComponent<SphereCollider>();
@@ -56,26 +37,9 @@ public class NewEnemy : MonoBehaviour
         node = sel1;
     }
 
+    // Update is called once per frame
     void Update()
     {
         node.UpdateNode(this);
-    }
-
-    void OnTriggerStay(Collider collision)
-    {
-        if (collision.tag == "Player")
-        {
-            publicCollider = collision;
-            playerDetected = true;
-        }
-    }
-
-    void OnTriggerExit(Collider collision)
-    {
-        if (collision.tag == "Player")
-        {
-            publicCollider = collision;
-            playerDetected = false;
-        }
     }
 }

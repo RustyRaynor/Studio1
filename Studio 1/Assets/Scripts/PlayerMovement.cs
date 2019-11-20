@@ -152,9 +152,9 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
             {
                 speed += 0.1f;
-                if (speed >= 8)
+                if (speed >= 5)
                 {
-                    speed = 8;
+                    speed = 5;
                 }
             }
             else

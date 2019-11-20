@@ -6,8 +6,9 @@ public class TempPatrolNode : Node
 {
     int position = 0;
 
-    public override int UpdateNode(NewEnemy con)
+    public override int UpdateNode(EnemyAbstract con)
     {
+        con.anim.SetBool("walking", true);
         Debug.Log("Patrol");
         con.transform.position = Vector3.MoveTowards(con.transform.position, con.patrolPosition[position], con.speed * Time.deltaTime);
 

@@ -12,8 +12,9 @@ public class ChasingNode : Node
         
     }
 
-    public override int UpdateNode(NewEnemy con)
+    public override int UpdateNode(EnemyAbstract con)
     {
+        con.anim.SetBool("walking", true);
         Debug.Log("Chase");
         if (Vector3.Distance(con.transform.position, con.player.transform.position) > 1f)
         {

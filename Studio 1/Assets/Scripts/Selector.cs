@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Selector : Node
 {
-    public override int UpdateNode(NewEnemy con)
+    public override int UpdateNode(EnemyAbstract con)
     {
         for(int i = 0; i < nList.Count; i++)
         {
