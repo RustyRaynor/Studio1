@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackingNode : Node
 {
-    public override int UpdateNode(NewEnemy con)
+    public override int UpdateNode(EnemyAbstract con)
     {
         Debug.Log("Attacked");
         return 2;

@@ -17,7 +17,7 @@ public abstract class Node
 
     public List<Node> nList = new List<Node>();
 
-    public virtual int UpdateNode(NewEnemy con)
+    public virtual int UpdateNode(EnemyAbstract con)
     {
         return 0;
     }
