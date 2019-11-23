@@ -19,6 +19,7 @@ public class ChasingNode : Node
         if (Vector3.Distance(con.transform.position, con.player.transform.position) > 1f)
         {
             con.transform.position = Vector3.MoveTowards(con.transform.position, con.player.transform.position, con.speed * Time.deltaTime);
+            con.transform.LookAt(con.player.transform);
             return 1;
         }
         return 2;

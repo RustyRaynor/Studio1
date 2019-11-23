@@ -24,8 +24,6 @@ public class CameraMovement : MonoBehaviour
 
     void CamMove()
     {
-        if (game.state != GameManager.State.pause)
-        {
             float x = Input.GetAxis("Mouse X");
             float y = Input.GetAxis("Mouse Y");
 
@@ -35,6 +33,6 @@ public class CameraMovement : MonoBehaviour
             rot.x = Mathf.Clamp(rot.x, minX, maxX);
 
             transform.rotation = Quaternion.Euler(-rot.x, rot.y, 0.0f);
-        }
+        
     }
 }

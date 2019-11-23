@@ -13,13 +13,15 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 move;
 
-    public enum State { alive, pause, dead}
+    public enum State { alive, dead}
     public State state;
 
     public Transform cameraRot;
 
     public float speed;
     float gravity = -9.81f;
+
+    public int soundMade;
 
     bool crouch = false;
     bool dead = true;
@@ -45,10 +47,6 @@ public class PlayerMovement : MonoBehaviour
                 AnimationsAndRotations();
                 break;
 
-            case State.pause:
-                anim.speed = 0;
-                break;
-
             case State.dead:
                 Dead();
                 break;
@@ -57,8 +55,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        if (game.state != GameManager.State.pause)
-        {
             if(player.health <= 0)
             {
                 state = State.dead;
@@ -67,11 +63,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 state = State.alive;
             }
-        }
-        else
-        {
-            state = State.pause;
-        }
+
     }
 
     void NormalMovement()
@@ -101,6 +93,11 @@ public class PlayerMovement : MonoBehaviour
         move.y += gravity;
 
         controller.Move(transform.TransformDirection(move) * Time.deltaTime);
+
+        if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+        {
+            soundMade = 0;
+        }
     }
 
     void AnimationsAndRotations()
@@ -146,11 +143,13 @@ public class PlayerMovement : MonoBehaviour
         if (crouch == true)
         {
             speed = 1;
+            soundMade = 1;
         }
         else
         {
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
             {
+                soundMade = 10;
                 speed += 0.1f;
                 if (speed >= 5)
                 {
@@ -159,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                soundMade = 5;
                 speed -= 0.1f;
                 if (speed <= 2)
                 {

@@ -5,32 +5,45 @@ using UnityEngine;
 public class KnightBT : EnemyAbstract
 {
     Selector sel1;
+    Selector sel2;
+
     Sequence seq1;
-    Sequence seq2;
-    AttackingNode attack1;
-    TempPatrolNode patrol1;
-    ChasingNode chase1;
-    DetectionNode detectedBehavior;
+
+    DetectionNode detectionNode;
+    SoundDetectionNode sound;
+    AttackingNode attack;
+    ChasingNode chase;
+    TempPatrolNode patrol;
 
     // Start is called before the first frame update
     void Start()
     {
+        attackRate = 3;
+
+        playerCode = player.GetComponent<PlayerMovement>();
+
         anim = GetComponent<Animator>();
         sphere = GetComponent<SphereCollider>();
+
         sel1 = new Selector();
+        sel2 = new Selector();
         seq1 = new Sequence();
-        seq2 = new Sequence();
-        attack1 = new AttackingNode();
-        patrol1 = new TempPatrolNode();
-        chase1 = new ChasingNode();
-        detectedBehavior = new DetectionNode();
+        detectionNode = new DetectionNode();
+        sound = new SoundDetectionNode();
+        attack = new AttackingNode();
+        chase = new ChasingNode();
+        patrol = new TempPatrolNode();
 
         sel1.nList.Add(seq1);
-        sel1.nList.Add(patrol1);
-        seq1.nList.Add(detectedBehavior);
-        seq1.nList.Add(seq2);
-        seq2.nList.Add(chase1);
-        seq2.nList.Add(attack1);
+        sel1.nList.Add(patrol);
+
+        seq1.nList.Add(sel2);
+        seq1.nList.Add(chase);
+        seq1.nList.Add(attack);
+
+        sel2.nList.Add(detectionNode);
+        sel2.nList.Add(sound);
+        
 
         patrolPosition[0] = transform.position;
 

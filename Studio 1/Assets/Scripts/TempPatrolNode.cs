@@ -11,6 +11,7 @@ public class TempPatrolNode : Node
         con.anim.SetBool("walking", true);
         Debug.Log("Patrol");
         con.transform.position = Vector3.MoveTowards(con.transform.position, con.patrolPosition[position], con.speed * Time.deltaTime);
+        con.transform.LookAt(con.patrolPosition[position]);
 
         if (con.transform.position == con.patrolPosition[position])
         {

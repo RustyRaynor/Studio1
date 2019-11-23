@@ -6,7 +6,6 @@ public class CameraCollision : MonoBehaviour
 {
     public GameObject gameMan;
 
-    GameManager game;
 
     public float maxDist;
     public float minDist;
@@ -23,7 +22,7 @@ public class CameraCollision : MonoBehaviour
 
     void Start()
     {
-        game = gameMan.GetComponent<GameManager>();
+
     }
 
     void Update()

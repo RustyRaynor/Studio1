@@ -6,6 +6,7 @@ public abstract class EnemyAbstract : MonoBehaviour
 {
      public float speed;
      public int attackDamage;
+     public float attackRate;
      public int health;
     
      public int fieldOfView = 110;
@@ -24,9 +25,11 @@ public abstract class EnemyAbstract : MonoBehaviour
 
      public GameObject player;
 
+     public PlayerMovement playerCode;
+
     void Start()
     {
-        
+        playerCode = player.GetComponent<PlayerMovement>();
     }
 
     void Update()

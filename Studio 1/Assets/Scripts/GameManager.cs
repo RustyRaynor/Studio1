@@ -26,12 +26,14 @@ public class GameManager : MonoBehaviour
             Pause();
             if (state == State.running)
             {
+                Time.timeScale = 1;
                 pauseMenu.SetActive(false);
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
             else if (state == State.pause)
             {
+                Time.timeScale = 0;
                 pauseMenu.SetActive(true);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
