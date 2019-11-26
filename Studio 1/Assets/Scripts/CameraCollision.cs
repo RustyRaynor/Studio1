@@ -32,7 +32,10 @@ public class CameraCollision : MonoBehaviour
             RaycastHit hit;
             if (Physics.Linecast(transform.parent.position, desiredCamPos, out hit))
             {
+            if (hit.collider.tag == "Objects" || hit.collider.tag == "Enemy")
+            {
                 distance = Mathf.Clamp(hit.distance, minDist, maxDist);
+            }
             }
             else
             {
