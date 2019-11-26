@@ -6,22 +6,38 @@ using UnityEngine.UI;
 public class SpikeTrap : MonoBehaviour
 {
     public Text pressText;
-    //public bool button;
+    public bool button;
     public GameObject trap;
+    private int counter;
+    public int loops;
+    public float waitTime;
+    private float sequenceTime;
     private Animation anime;
 
     void Start()
     {
         anime = trap.GetComponent<Animation>();
         pressText.gameObject.SetActive(false);
-        //button = false;
+        button = false;
+        counter = loops;
+        sequenceTime = 0;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (button && Input.GetKeyDown(KeyCode.E))
+        {
+            counter = 0;
+        }
+        sequenceTime = sequenceTime + Time.deltaTime;
+
+        if (counter < loops && sequenceTime >= waitTime)
         {
             Activated();
+            sequenceTime = 0;
+            counter++;
+            Debug.Log("I work" + counter);
+            
         }
     }
     public void ButtonPressed()
@@ -35,7 +51,7 @@ public class SpikeTrap : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             pressText.gameObject.SetActive(true);
-            //button = true;
+            button = true;
             print("press e");
         }
     }
@@ -45,18 +61,16 @@ public class SpikeTrap : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             pressText.gameObject.SetActive(false);
-            //button = false;
+            button = false;
         }   
     }
 
     public void Activated()
     {
         pressText.gameObject.SetActive(false);
-        //button = true;
         anime.Play();
     }
 
-    
-
+   
 }
     
