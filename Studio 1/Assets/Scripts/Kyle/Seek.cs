@@ -7,13 +7,10 @@ public class Seek : MonoBehaviour
     public GameObject target;
     public float maxVelocity;
     public float maxForce;
-    public float maxSpeed;
     public float mass;
+    public float slowingR;
     Vector3 velocity;
     Vector3 desiredVelocity;
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +26,18 @@ public class Seek : MonoBehaviour
 
     public void seek()
     {
-        transform.position += velocity * Time.deltaTime;
-        desiredVelocity = (target.transform.position - transform.position).normalized * maxVelocity;
+        transform.position += velocity;
+        //desiredVelocity = (target.transform.position - transform.position).normalized * maxVelocity;
+        desiredVelocity = target.transform.position - transform.position;
+        float distance = desiredVelocity.magnitude;
+        if(distance < slowingR)
+        {
+            desiredVelocity = desiredVelocity.normalized * maxVelocity * (distance / slowingR);
+        }
+        else
+        {
+            desiredVelocity = desiredVelocity.normalized * maxVelocity;
+        }
         Vector3 turn = desiredVelocity - velocity;
         turn = Vector3.ClampMagnitude(turn, maxForce);
         turn = turn / mass;
