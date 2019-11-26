@@ -12,6 +12,9 @@ public class Seek : MonoBehaviour
     Vector3 velocity;
     Vector3 desiredVelocity;
 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +29,7 @@ public class Seek : MonoBehaviour
 
     public void seek()
     {
-        transform.position += velocity;
+        transform.position += velocity * Time.deltaTime;
         desiredVelocity = (target.transform.position - transform.position).normalized * maxVelocity;
         Vector3 turn = desiredVelocity - velocity;
         turn = Vector3.ClampMagnitude(turn, maxForce);
