@@ -14,6 +14,8 @@ public abstract class EnemyAbstract : MonoBehaviour
     public float mass;
     public float slowingR;
 
+    protected bool dead = false;
+
     public Vector3 velocity;
     public Vector3 desiredVelocity;
 
@@ -61,5 +63,25 @@ public abstract class EnemyAbstract : MonoBehaviour
             publicCollider = collision;
             playerDetected = false;
         }
+    }
+
+    protected void Dead()
+    {
+        if (health <= 0)
+        {
+            dead = true;
+        }
+        if(dead == true)
+        {
+            anim.SetTrigger("Dead");
+            dead = false;
+            StartCoroutine("Death");
+        }
+    }
+    
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(this.gameObject);
     }
 }

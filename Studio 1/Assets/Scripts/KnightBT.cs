@@ -53,6 +53,8 @@ public class KnightBT : EnemyAbstract
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(health);
+        Dead();
         node.UpdateNode(this);
     }
 }
