@@ -8,8 +8,15 @@ public abstract class EnemyAbstract : MonoBehaviour
      public int attackDamage;
      public float attackRate;
      public int health;
-    
-     public int fieldOfView = 110;
+
+    public float maxVelocity;
+    public float maxForce;
+    public float maxSpeed;
+    public float mass;
+    public Vector3 velocity;
+    public Vector3 desiredVelocity;
+
+    public int fieldOfView = 110;
     
      public SphereCollider sphere;
     
@@ -35,6 +42,7 @@ public abstract class EnemyAbstract : MonoBehaviour
     void Update()
     {
     }
+
 
     void OnTriggerStay(Collider collision)
     {
