@@ -24,9 +24,17 @@ public abstract class Node
 
     protected void Seek(EnemyAbstract con, Vector3 target)
     {
-        con.transform.position += con.velocity;
         con.desiredVelocity = (target - con.transform.position).normalized * con.maxVelocity;
         Vector3 turn = con.desiredVelocity - con.velocity;
+        float distance = con.desiredVelocity.magnitude;
+        if (distance < con.slowingR)
+        {
+            con.desiredVelocity = con.desiredVelocity.normalized * con.maxVelocity * (distance / con.slowingR);
+        }
+        else
+        {
+            con.desiredVelocity = con.desiredVelocity.normalized * con.maxVelocity;
+        }
         turn = Vector3.ClampMagnitude(turn, con.maxForce);
         turn = turn / con.mass;
         con.velocity = Vector3.ClampMagnitude(con.velocity + turn * Time.deltaTime, con.maxVelocity);
