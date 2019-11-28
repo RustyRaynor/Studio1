@@ -11,8 +11,9 @@ public abstract class EnemyAbstract : MonoBehaviour
 
     public float maxVelocity;
     public float maxForce;
-    public float maxSpeed;
     public float mass;
+    public float slowingR;
+
     public Vector3 velocity;
     public Vector3 desiredVelocity;
 
