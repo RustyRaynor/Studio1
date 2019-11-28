@@ -26,7 +26,7 @@ public class Seek : MonoBehaviour
 
     public void seek()
     {
-        transform.position += velocity;
+        transform.position += velocity * Time.deltaTime;
         //desiredVelocity = (target.transform.position - transform.position).normalized * maxVelocity;
         desiredVelocity = target.transform.position - transform.position;
         float distance = desiredVelocity.magnitude;
@@ -42,7 +42,6 @@ public class Seek : MonoBehaviour
         turn = Vector3.ClampMagnitude(turn, maxForce);
         turn = turn / mass;
         velocity = Vector3.ClampMagnitude(velocity + turn * Time.deltaTime, maxVelocity);
-        transform.position += velocity * Time.deltaTime;
         //Vector3 newVelocity = velocity + turn;
         //newVelocity = Vector3.ClampMagnitude(newVelocity, maxSpeed);  
     }

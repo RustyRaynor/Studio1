@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pursue : MonoBehaviour
 {
-    public GameObject target;
+    public Movement target;
     public float maxVelocity;
     public float maxForce;
     public float mass;
@@ -22,17 +22,18 @@ public class Pursue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pursue(futurePos);   
+        pursue();   
     }
 
-    public Vector3 pursue(Vector3 futurePos)
+    public void pursue()
     {
-        float T = desiredVelocity.magnitude / maxVelocity;
-        futurePos = target.transform.position * T;
+        Vector3 distanceT = target.transform.position - transform.position;
+        float T = distanceT.magnitude / maxVelocity;
+        futurePos = target.transform.position + target.velocity * T;
 
-        transform.position += velocity;
+        transform.position += velocity * Time.deltaTime;
         //desiredVelocity = (target.transform.position - transform.position).normalized * maxVelocity;
-        desiredVelocity = target.transform.position - transform.position;
+        desiredVelocity = futurePos - transform.position;
 
         float distance = desiredVelocity.magnitude;
 
@@ -45,12 +46,12 @@ public class Pursue : MonoBehaviour
             desiredVelocity = desiredVelocity.normalized * maxVelocity;
         }
 
-        Vector3 turn = desiredVelocity - velocity;
+        Vector3 turn = (target.transform.position - transform.position).normalized - velocity;
         turn = Vector3.ClampMagnitude(turn, maxForce);
         turn = turn / mass;
         velocity = Vector3.ClampMagnitude(velocity + turn * Time.deltaTime, maxVelocity);
         transform.position += velocity * Time.deltaTime;
 
-        return pursue(futurePos);
+        //return pursue(futurePos);
     }
 }
