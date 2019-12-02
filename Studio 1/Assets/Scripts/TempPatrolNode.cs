@@ -11,10 +11,10 @@ public class TempPatrolNode : Node
         con.anim.SetBool("walking", true);
         Debug.Log("Patrol");
 
-       //con.transform.position = Vector3.MoveTowards(con.transform.position, con.patrolPosition[position], con.speed * Time.deltaTime);
-       //con.transform.LookAt(con.patrolPosition[position]);
+        //con.transform.position = Vector3.MoveTowards(con.transform.position, con.patrolPosition[position], con.speed * Time.deltaTime);
+        //con.transform.LookAt(con.patrolPosition[position]);
 
-        Seek(con, con.patrolPosition[position]);
+        con.Move(con.patrolPosition[position]);
 
         Vector3 distance = con.patrolPosition[position] - con.transform.position;
         Vector3 distanceLeft = distance.normalized;

@@ -8,13 +8,15 @@ public class Lever : MonoBehaviour
 
     Traps trapCode;
 
+    Animator anim;
+
     public GameObject InteractingUI;
 
     bool playerIn = false;
     // Start is called before the first frame update
     void Start()
     {
-       
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class Lever : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                anim.SetTrigger("on");
                 for (int i = 0; i < traps.Count; i++)
                 {
                     trapCode = traps[i].GetComponent<Traps>();

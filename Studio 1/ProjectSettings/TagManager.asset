@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SpikeTrap
-  - Pendulum
   - Objects
   - Enemy
+  - Traps
+  - floor
   layers:
   - Default
   - TransparentFX
