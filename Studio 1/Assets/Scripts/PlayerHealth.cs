@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,11 +10,16 @@ public class PlayerHealth : MonoBehaviour
     public float healRate = 1f;
 
     PlayerMovement player;
-
+    public GameObject panel;
+    Image image;
+    public Color tempColor;
+    
 
     void Start()
     {
         player = GetComponent<PlayerMovement>();
+        image = panel.GetComponent<Image>();
+        tempColor = image.color;
     }
 
     // Update is called once per frame
@@ -27,6 +33,8 @@ public class PlayerHealth : MonoBehaviour
                 StartCoroutine("Heal");
             }
         }
+        image.color = tempColor;
+        tempColor.a = (100f - health) / 100f;
     }
 
     IEnumerator Heal()

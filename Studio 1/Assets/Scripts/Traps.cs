@@ -38,13 +38,13 @@ public class Traps : MonoBehaviour
             if (other.tag == "Player")
             {
                 player = other.GetComponent<PlayerHealth>();
-                player.health -= 10;
+                player.health -= 20;
                 player.lastHitTime = Time.time;
             }
             else if (other.tag == "Enemy")
             {
                 enemy = other.GetComponent<EnemyAbstract>();
-                enemy.health -= 50;
+                enemy.health -= 100;
                 Debug.Log("Hit");
             }
         }
