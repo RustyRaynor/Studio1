@@ -130,7 +130,7 @@ public abstract class EnemyAbstract : MonoBehaviour
 
         if (Physics.Linecast(raycastPosition.transform.position, ahead, out hit))
         {
-            if (hit.collider.tag == "Objects" || hit.collider.tag == "Enemy")
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Objects") || (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")))
             {
                 Debug.Log("ahead");
                 mostThreatening = hit.collider;
@@ -139,7 +139,7 @@ public abstract class EnemyAbstract : MonoBehaviour
         }
         if (Physics.Linecast(raycastPosition.transform.position, ahead2, out hit))
         {
-            if (hit.collider.tag == "Objects" || hit.collider.tag == "Enemy")
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Objects") || (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")))
             {
                 Debug.Log("ahead2");
                 mostThreatening = hit.collider;
