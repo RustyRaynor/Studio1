@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpikeTrap
   - Pendulum
+  - Trap
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public abstract class EnemyAbstract : MonoBehaviour
      public int attackDamage;
      public float attackRate;
      public int health;
+     public int index = 0;
     
      public int fieldOfView = 110;
     
@@ -20,6 +21,7 @@ public abstract class EnemyAbstract : MonoBehaviour
      public Animator anim;
     
      public Vector3[] patrolPosition = new Vector3[3];
+     public Vector3[] patrol;
     
      public Node node;
 

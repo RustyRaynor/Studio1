@@ -7,6 +7,9 @@ public class PlayerHealth : MonoBehaviour
     public int health = 100;
     public float lastHitTime;
     public float healRate = 1f;
+    public int trapDamage = 50;
+    public float waitTime;
+    public float hitTime;
 
     PlayerMovement player;
 
@@ -14,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerMovement>();
+        hitTime = 0;
     }
 
     // Update is called once per frame
@@ -27,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
                 StartCoroutine("Heal");
             }
         }
+        
     }
 
     IEnumerator Heal()
@@ -46,4 +51,20 @@ public class PlayerHealth : MonoBehaviour
             health -= 20;
         }
     }
+    
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.transform.tag == "Trap")
+        {
+            if (Time.time - hitTime >= waitTime)
+            {
+                lastHitTime = Time.time;
+                health -= trapDamage;
+                hitTime = Time.time;
+                Debug.Log("hit");
+            }
+        }
+    }
+
 }
