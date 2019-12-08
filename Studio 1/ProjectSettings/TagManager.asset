@@ -4,10 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
+  - SpikeTrap
+  - Pendulum
+  - Trap
+=======
   - Objects
   - Enemy
   - Traps
   - floor
+>>>>>>> eabf6a374b64b9dc7a32faba57504833c292ce41
   layers:
   - Default
   - TransparentFX

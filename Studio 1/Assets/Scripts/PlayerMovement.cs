@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     PlayerHealth player;
 
-    Vector3 move;
+    public Vector3 move;
 
     public enum State { alive, dead}
     public State state;
