@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     Animator anim;
     PlayerHealth player;
 
-    Vector3 move;
+    public Vector3 move;
 
     public enum State { alive, dead}
     public State state;
@@ -68,19 +68,19 @@ public class PlayerMovement : MonoBehaviour
 
     void NormalMovement()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.D) == false && Input.GetKey(KeyCode.A) == false)
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             if (crouch != true)
             {
                 crouch = true;
-                anim.SetBool("crouch", true);
+                anim.SetTrigger("Crouch");
                 controller.height = 1.3f;
                 controller.center = new Vector3(0, 0.73f, 0);
             }
             else
             {
                 crouch = false;
-                anim.SetBool("crouch", false);
+                anim.SetTrigger("Idle");
                 controller.height = 1.85f;
                 controller.center = new Vector3(0, 1.01f, 0);
             }
@@ -115,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             anim.SetBool("walk back", true);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, cameraRot.eulerAngles.y, transform.eulerAngles.z);
         }
         else
         {

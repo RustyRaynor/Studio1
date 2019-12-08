@@ -35,18 +35,15 @@ public class ConversationScript : MonoBehaviour
 
         if (distance <= interactDistance)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
                 if (interacting)
                 {
                     interacting = false;
                 }
                 else
                 {
-                    interacting = true;
-                    UI.SetActive(true);
+                        interacting = true;
+                        UI.SetActive(true);
                 }
-            }
         }
         else
         {

@@ -4,16 +4,10 @@ using UnityEngine;
 
 public abstract class Node
 {
-   // public enum result
-   // {
-   //     Failure,
-   //     Running,
-   //     Success
-   // }
-
     public int state;
 
-   // public result curResult;
+    float Max_See_Ahead = 5f;
+
 
     public List<Node> nList = new List<Node>();
 
