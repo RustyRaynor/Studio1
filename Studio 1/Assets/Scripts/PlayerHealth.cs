@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 100;
+    public int health ;
     public float lastHitTime;
     public float healRate = 1f;
     public int trapDamage = 50;
@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     {
         player = GetComponent<PlayerMovement>();
         hitTime = 0;
+        health = 100;
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(health < 100)
         {
-            health += 1;
+           //    health += 1;
         }
         yield return new WaitForSeconds(1f);
     }

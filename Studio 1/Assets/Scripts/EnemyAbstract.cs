@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyAbstract : MonoBehaviour
 {
-<<<<<<< HEAD
+
      public float speed;
      public int attackDamage;
      public float attackRate;
@@ -18,16 +18,13 @@ public abstract class EnemyAbstract : MonoBehaviour
      public bool playerDetected = false;
     
      public Collider publicCollider;
+    public Collider weaponCollider;
     
      public Animator anim;
     
      public Vector3[] patrolPosition = new Vector3[3];
      public Vector3[] patrol;
-=======
-    public float speed;
-    public int attackDamage;
-    public float attackRate;
-    public int health;
+    
 
     public float maxForce;
     public float mass;
@@ -35,6 +32,7 @@ public abstract class EnemyAbstract : MonoBehaviour
     public float deathTime;
     public float maxSeeAhead;
     public float maxAvoidanceForce;
+    public float enemyRadius;
 
     public bool dead = false;
 
@@ -42,19 +40,6 @@ public abstract class EnemyAbstract : MonoBehaviour
     public Vector3 desiredVelocity;
     public Vector3 avoidance;
     public Vector3 steering;
-
-    public int fieldOfView = 110;
->>>>>>> eabf6a374b64b9dc7a32faba57504833c292ce41
-    
-    public SphereCollider sphere;
-   
-    public bool playerDetected = false;
-   
-    public Collider publicCollider;
-   
-    public Animator anim;
-   
-    public Vector3[] patrolPosition = new Vector3[3];
    
     public Node node;
 
@@ -167,5 +152,23 @@ public abstract class EnemyAbstract : MonoBehaviour
             avoidance = avoidance * 0;
         }
         return avoidance;
+    }
+
+    public void EnableCollider()
+    {
+        weaponCollider.enabled = true;
+    }
+
+    public void DisableCollider()
+    {
+        weaponCollider.enabled = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "player")
+        {
+            health -= attackDamage;
+        }
     }
 }
