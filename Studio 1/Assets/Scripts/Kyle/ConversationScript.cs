@@ -8,108 +8,141 @@ public class ConversationScript : MonoBehaviour
     public string name;
     public string[] sentences;
     int line = 0;
+    public int secondQuestLine;
     public Text convo;
     public Text nameText;
 
-    public GameObject player;
-    public GameObject UI;
-    public GameObject button;
+    public GameObject InteractingUI;
+    public GameObject GameMan;
 
-    public float interactDistance = 5f;
-    float distance;
+    GameManager gameManager;
+
+    bool playerIn = false;
+
+    public GameObject UI;
 
     bool interacting = false;
+    public bool questGiver;
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         UI.SetActive(false);
         nameText.text = name;
+        gameManager = GameMan.GetComponent<GameManager>();
         convo.text = sentences[line];
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
-
-        if (distance <= interactDistance)
+        if (playerIn == true)
         {
-                if (interacting)
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                UI.SetActive(true);
+                interacting = true;
+                playerIn = false;
+                convo.text = "";
+                if (gameManager.questObjective1 == false)
                 {
-                    interacting = false;
+                    line = secondQuestLine;
                 }
-                else
-                {
-                        interacting = true;
-                        UI.SetActive(true);
-                }
+                StartCoroutine(Separate());
+            }
         }
         else
         {
-            interacting = false;
-            UI.SetActive(false);
+            InteractingUI.SetActive(false);
         }
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Next();
-        //}
-
-        if (convo.text == sentences[line])
-        {
-            button.SetActive(true);
-        }
-    }
-
-    public void Next()
-    {
-        button.SetActive(false);
 
         if (interacting == true)
-        {  
-            if (line < sentences.Length - 1)
+        {
+            if (questGiver == true)
             {
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    line++;
-                    convo.text = "";
-                    //convo.text = sentences[line];
-                    //for (int i = 0; i < sentences.Length; i++)
-                    //{
-                    //    convo.text = convo.text + sentences[i];
-                    //    timeRate = 1.0f;
-                    //}
-                    StartCoroutine(Separate());
+                    if (gameManager.questObjective1 == true)
+                    {
+                        if (line < secondQuestLine - 1)
+                        {
+                            
+                                line++;
+                                convo.text = "";
+                                StartCoroutine(Separate());
+                            
+                        }
+                        else
+                        {
+                            UI.SetActive(false);
+                            interacting = false;
+                            line = secondQuestLine - 1;
+                            gameManager.questActivated = true;
+                        }
+                    }
+                    else
+                    {
+                        if (line < sentences.Length - 1)
+                        {
+                              line++;
+                              convo.text = "";
+                              StartCoroutine(Separate());
+                        }
+                        else
+                        {
+                            UI.SetActive(false);
+                            interacting = false;
+                            line = secondQuestLine - 1;
+                            gameManager.questFinished = true;
+                        }
+                    }
                 }
             }
             else
             {
-                interacting = false;
-                UI.SetActive(false);
-                line = 0;
-                convo.text = sentences[line];
-                button.SetActive(false);
+                if (line < sentences.Length - 1)
+                {
+
+                    line++;
+                    convo.text = "";
+                    StartCoroutine(Separate());
+
+                }
+                else
+                {
+                    UI.SetActive(false);
+                    interacting = false;
+                    line = 0;
+                }
             }
         }
     }
 
-   IEnumerator Separate()
-   {
+        IEnumerator Separate()
+        {
             foreach (char letter in sentences[line].ToCharArray())
             {
                 convo.text += letter;
                 yield return new WaitForSeconds(0.05f);
             }
-   }
+        }
 
-    private void OnGUI()
-    {
-        if (interacting == false)
+        private void OnTriggerEnter(Collider other)
         {
-            if (distance <= interactDistance)
+            if (other.tag == "Player")
             {
-                GUI.TextArea(new Rect(Screen.height / 2, Screen.width / 2, 500, 500), "Press 'E' to read.");
+                InteractingUI.SetActive(true);
+                playerIn = true;
             }
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.tag == "Player")
+            {
+                playerIn = false;
+                UI.SetActive(false);
+            }
+        }
+
     }
-}

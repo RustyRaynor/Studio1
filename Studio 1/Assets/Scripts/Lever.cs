@@ -54,8 +54,11 @@ public class Lever : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        InteractingUI.SetActive(false);
-        playerIn = false;
+        if (other.tag == "Player")
+        {
+            InteractingUI.SetActive(false);
+            playerIn = false;
+        }
     }
 
     private void OnDrawGizmos()

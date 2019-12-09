@@ -8,7 +8,7 @@ public class Wraith : EnemyAbstract
     Sequence sequence;
     AttackingNode attack;
     ChasingNode chase;
-    EnemyMovement patrol;
+    TempPatrolNode patrol;
     DetectionNode detect;
     SoundDetectionNode sound;
 
@@ -23,7 +23,7 @@ public class Wraith : EnemyAbstract
         selector = new Selector();
         sequence = new Sequence();
         chase = new ChasingNode();
-        patrol = new EnemyMovement();
+        patrol = new TempPatrolNode();
         attack = new AttackingNode();
         detect = new DetectionNode();
         sound = new SoundDetectionNode();

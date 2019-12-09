@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 9d8a628c084ff134580a91bd6abc005f
   - enabled: 1
+    path: Assets/Scenes/Textured 3 DONE.unity
+    guid: 856ed2c002c461d42a061d93a1a620f9
+  - enabled: 1
     path: Assets/Scenes/Raynor.unity
     guid: b29e23c8379c4cf4091e6d5ca192df37
   m_configObjects: {}
