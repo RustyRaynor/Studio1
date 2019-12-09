@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetectN : NodeBT
 {
-    public override int UpdateNode(Context context)
+    public override int UpdateNode(Context context) //Detects if player can be seen or not
     {
         if (context.playerDetected == true)
         {
@@ -35,7 +35,7 @@ public class DetectN : NodeBT
                 }
             }
         }
-        context.anim.SetBool("detected", false);
+        //context.anim.SetBool("detected", false);
         return 0;
     }
 }

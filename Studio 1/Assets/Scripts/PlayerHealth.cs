@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health = 100;
+    public int health ;
     public float lastHitTime;
     public float healRate = 1f;
 
@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerMovement>();
+        health = 100;
         image = panel.GetComponent<Image>();
         tempColor = image.color;
     }
@@ -41,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(health < 100)
         {
-            health += 1;
+           //    health += 1;
         }
         yield return new WaitForSeconds(1f);
     }

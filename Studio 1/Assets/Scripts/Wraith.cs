@@ -15,7 +15,7 @@ public class Wraith : EnemyAbstract
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
         playerCode = player.GetComponent<PlayerMovement>();
         sphere = GetComponent<SphereCollider>();
         
@@ -44,5 +44,5 @@ public class Wraith : EnemyAbstract
     {
         node.UpdateNode(this);
     }
-    
+   
 }

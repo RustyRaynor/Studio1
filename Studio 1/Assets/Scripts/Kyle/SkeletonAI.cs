@@ -23,20 +23,23 @@ public class SkeletonAI : Context
         sequence1 = new SequenceN();
         sequence2 = new SequenceN();
 
-        detection = new DetectN();
-        sdetection = new SDectN();
-        patrol = new PatrolNode();
-        attack = new AttackN();
-        pursue = new PursueN();
-        death = new DeathN();
+        detection = new DetectN(); //Checks whether Player can be seen or not
+        sdetection = new SDectN(); //Checks whether Player can be heard or not
+        patrol = new PatrolNode(); //Patrols points with the seek steering behaviour
+        attack = new AttackN(); //Attacks the player if the enemy is within striking range
+        pursue = new PursueN(); //Chases the player using pursue steering behavior
+        death = new DeathN(); //Dies if health is 0 s
 
-        selector1.nodeList.Add(sequence1);
+        selector1.nodeList.Add(death);
+
         selector1.nodeList.Add(sequence2);
 
         selector1.nodeList.Add(patrol);
 
-        sequence1.nodeList.Add(death);
+        //sequence1.nodeList.Add(death);
+
         
+
         sequence2.nodeList.Add(selector2);
         sequence2.nodeList.Add(pursue);
         sequence2.nodeList.Add(attack);
