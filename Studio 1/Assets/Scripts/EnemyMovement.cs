@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class EnemyMovement : Node
+public class EnemyMovement : Node
 {
-    public float speed = 60;
     public Vector3 distance;
     public Vector3 footstep;
 
-    public override void UpdateScreen(Manager man)
+    public override int UpdateNode(EnemyAbstract man)
     {
-        distance = man.patrol[man.index] - man.transform.position;
-        footstep = distance.normalized * speed * Time.deltaTime;
+        Debug.Log("patrol");
+        man.anim.SetBool("walking", true);
+        distance = man.patrolPosition[man.index] - man.transform.position;
+        distance.y = 0;
+        footstep = distance.normalized * man.speed * Time.deltaTime;
         man.transform.position = man.transform.position + footstep;
 
         if (distance.magnitude <= footstep.magnitude)
         {
             man.index++;
-            if (man.index == man.patrol.Length)
+            if (man.index == man.patrolPosition.Length)
             {
                 man.index = 0;
             }
+            
         }
+        return 0;
     }
-}*/
+}

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DeathNode : Node
 {
-    bool dead = true;
     public override int UpdateNode(EnemyAbstract con)
     {
-        { 
-           con.anim.SetTrigger("Dead");
-           con.dead = true;
+        {
+            if (con.dead == false)
+            {
+                con.anim.SetTrigger("dead");
+                con.dead = true;
+            }
            return 2;
         }
     }
