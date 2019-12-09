@@ -9,6 +9,7 @@ public class KnightBT : EnemyAbstract
 
     Sequence seq1;
     Sequence seq2;
+    Sequence seq3;
 
     DetectionNode detectionNode;
     SoundDetectionNode sound;
@@ -17,6 +18,8 @@ public class KnightBT : EnemyAbstract
     TempPatrolNode patrol;
     DyingCheckNode dyingCheckNode;
     DeathNode deathNode;
+    LastKnownCheckNode knownCheckNode;
+    GoToLastKnown goToLastKnown;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,7 @@ public class KnightBT : EnemyAbstract
         sel2 = new Selector();
         seq1 = new Sequence();
         seq2 = new Sequence();
+        seq3 = new Sequence();
         detectionNode = new DetectionNode();
         sound = new SoundDetectionNode();
         attack = new AttackingNode();
@@ -39,9 +43,12 @@ public class KnightBT : EnemyAbstract
         patrol = new TempPatrolNode();
         dyingCheckNode = new DyingCheckNode();
         deathNode = new DeathNode();
+        knownCheckNode = new LastKnownCheckNode();
+        goToLastKnown = new GoToLastKnown();
 
         sel1.nList.Add(seq1);
         sel1.nList.Add(seq2);
+        sel1.nList.Add(seq3);
         sel1.nList.Add(patrol);
 
         seq1.nList.Add(dyingCheckNode);
@@ -50,6 +57,9 @@ public class KnightBT : EnemyAbstract
         seq2.nList.Add(sel2);
         seq2.nList.Add(chase);
         seq2.nList.Add(attack);
+
+        seq3.nList.Add(knownCheckNode);
+        seq3.nList.Add(goToLastKnown);
 
         sel2.nList.Add(detectionNode);
         sel2.nList.Add(sound);

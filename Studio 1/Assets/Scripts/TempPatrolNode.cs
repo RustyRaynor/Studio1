@@ -8,24 +8,32 @@ public class TempPatrolNode : Node
 
     public override int UpdateNode(EnemyAbstract con)
     {
-        con.anim.SetBool("walking", true);
-        Debug.Log("Patrol");
+        con.anim.SetFloat("Speed", 1);
+        con.speed = con.walkSpeed;
 
         //con.transform.position = Vector3.MoveTowards(con.transform.position, con.patrolPosition[position], con.speed * Time.deltaTime);
         //con.transform.LookAt(con.patrolPosition[position]);
-
-        con.Move(con.patrolPosition[position]);
 
         Vector3 distance = con.patrolPosition[position] - con.transform.position;
         Vector3 distanceLeft = distance.normalized;
 
         if (distance.magnitude <= distanceLeft.magnitude)
         {
-            position++;
-            if (position == con.patrolPosition.Length)
+            con.anim.SetBool("walking", false);
+            if (Time.time - con.waitTime >= con.waitTimeRate)
             {
-                position = 0;
+                position++;
+                if (position == con.patrolPosition.Length)
+                {
+                    position = 0;
+                }
             }
+        }
+        else
+        {
+            con.anim.SetBool("walking", true);
+            con.Move(con.patrolPosition[position]);
+            con.waitTime = Time.time;
         }
         return 1;
     }

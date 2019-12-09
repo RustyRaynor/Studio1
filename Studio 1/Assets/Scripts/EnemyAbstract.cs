@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyAbstract : MonoBehaviour
 {
+<<<<<<< HEAD
 
      public float speed;
      public int attackDamage;
@@ -25,6 +26,12 @@ public abstract class EnemyAbstract : MonoBehaviour
      public Vector3[] patrolPosition = new Vector3[3];
      public Vector3[] patrol;
     
+=======
+    public float speed;
+    public int attackDamage;
+    public float attackRate;
+    public int health;
+>>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
 
     public float maxForce;
     public float mass;
@@ -32,15 +39,42 @@ public abstract class EnemyAbstract : MonoBehaviour
     public float deathTime;
     public float maxSeeAhead;
     public float maxAvoidanceForce;
+<<<<<<< HEAD
     public float enemyRadius;
+=======
+    public float waitTimeRate = 3f;
+    public float waitTime;
+
+    public float walkSpeed;
+    public float runSpeed;
+>>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
 
     public bool dead = false;
+    public bool lastKnown;
 
     public Vector3 velocity;
     public Vector3 desiredVelocity;
+    public Vector3 nonSpeedVelocity;
     public Vector3 avoidance;
     public Vector3 steering;
+<<<<<<< HEAD
    
+=======
+    public Vector3 lastKnownLocation;
+
+    public int fieldOfView = 110;
+
+    public SphereCollider sphere;
+
+    public bool playerDetected = false;
+
+    public Collider publicCollider;
+
+    public Animator anim;
+
+    public Vector3[] patrolPosition = new Vector3[3];
+
+>>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
     public Node node;
 
     public GameObject player;
@@ -78,7 +112,7 @@ public abstract class EnemyAbstract : MonoBehaviour
 
     protected void Dead()
     {
-        if(dead == true)
+        if (dead == true)
         {
             StartCoroutine("Death");
         }
@@ -87,14 +121,14 @@ public abstract class EnemyAbstract : MonoBehaviour
     IEnumerator Death()
     {
         yield return new WaitForSeconds(5f);
-        Destroy(this.gameObject); 
+        Destroy(this.gameObject);
     }
 
     public void Move(Vector3 target)
     {
         steering = steering * 0;
         steering = Seek(target);
-        //steering = steering + CollisionAvoidance();
+        steering = steering + CollisionAvoidance();
         steering = Vector3.ClampMagnitude(steering, maxForce);
         steering = steering / mass;
 
@@ -106,53 +140,56 @@ public abstract class EnemyAbstract : MonoBehaviour
     public Vector3 Seek(Vector3 target)
     {
         desiredVelocity = target - transform.position;
+        nonSpeedVelocity = desiredVelocity.normalized;
         desiredVelocity = desiredVelocity.normalized * speed;
         return desiredVelocity - velocity;
     }
 
     public Vector3 CollisionAvoidance()
     {
-        Vector3 ahead = transform.position + velocity.normalized * maxSeeAhead;
-        Vector3 ahead2 = transform.position + velocity.normalized * maxSeeAhead * 0.5f;
-        ahead2.y = ahead.y;
+        Vector3 ahead = transform.position + nonSpeedVelocity * maxSeeAhead;
+        Vector3 ahead2 = transform.position + nonSpeedVelocity * maxSeeAhead * 0.5f;
 
         Collider mostThreatening = null;
 
-        Vector3 currentPosition = transform.position;
-        currentPosition.y = ahead.y;
+        ahead2.y = raycastPosition.transform.position.y;
+        ahead.y = raycastPosition.transform.position.y;
 
-        Debug.DrawLine(currentPosition, ahead);
-        Debug.DrawLine(currentPosition, ahead2, Color.red);
+        Debug.DrawLine(raycastPosition.transform.position, ahead);
+        Debug.DrawLine(raycastPosition.transform.position, ahead2, Color.red);
 
         RaycastHit hit;
-        RaycastHit hit2;
 
-        if(Physics.Raycast(transform.position, ahead, out hit))
+        if (Physics.Linecast(raycastPosition.transform.position, ahead, out hit))
         {
-            if(hit.collider.tag != "Player" && hit.collider.tag != "Enemy" && hit.collider.tag != "floor")
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Objects") || (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")))
             {
+                Debug.Log("ahead");
                 mostThreatening = hit.collider;
+                avoidance = ahead - hit.collider.bounds.center;
             }
         }
-        if (Physics.Raycast(transform.position, ahead2, out hit2))
+        if (Physics.Linecast(raycastPosition.transform.position, ahead2, out hit))
         {
-            if (hit2.collider.tag != "Player" && hit2.collider.tag != "Enemy" && hit2.collider.tag != "floor")
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Objects") || (hit.collider.gameObject.layer == LayerMask.NameToLayer("Enemy")))
             {
-                mostThreatening = hit2.collider;
+                Debug.Log("ahead2");
+                mostThreatening = hit.collider;
+                avoidance = ahead2 - hit.collider.bounds.center;
             }
         }
-
-        if(mostThreatening != null)
+        if (mostThreatening != null)
         {
-            avoidance = ahead - mostThreatening.bounds.center;
             avoidance = avoidance.normalized * maxAvoidanceForce;
         }
         else
         {
             avoidance = avoidance * 0;
+            return avoidance;
         }
         return avoidance;
     }
+<<<<<<< HEAD
 
     public void EnableCollider()
     {
@@ -172,3 +209,6 @@ public abstract class EnemyAbstract : MonoBehaviour
         }
     }
 }
+=======
+}
+>>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
