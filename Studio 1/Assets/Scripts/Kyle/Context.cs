@@ -10,7 +10,7 @@ public abstract class Context : MonoBehaviour
     public float maxForce;
     public float maxVelocity;
     public float mass;
-    public float slowingR;
+    //public float slowingR;
     public float deathTime;
     public float maxSeeAhead;
     public float maxAvoidanceForce;
@@ -32,7 +32,7 @@ public abstract class Context : MonoBehaviour
 
     public Animator anim;
 
-    public Vector3[] patrolPosition = new Vector3[3];
+    public Vector3[] positions;
 
     public NodeBT nodebt;
 
@@ -64,7 +64,7 @@ public abstract class Context : MonoBehaviour
         }
     }
 
-    protected void Death()
+    protected void Death() //Detroys skeleton when dead
     {
         if (isDead == true)
         {
@@ -72,20 +72,22 @@ public abstract class Context : MonoBehaviour
         }
     }
 
-    public void Seek(Vector3 target)
+
+    public void Seek(Vector3 target) //Chases after Player
     {
-        transform.position += velocity * Time.deltaTime;
-        //desiredVelocity = (target.transform.position - transform.position).normalized * maxVelocity;
+
+        transform.position += velocity * Time.deltaTime * anim.GetFloat("vCurve");
+        desiredVelocity = (target - transform.position).normalized * maxVelocity;
         desiredVelocity = target - transform.position;
-        float distance = desiredVelocity.magnitude;
-        if (distance < slowingR)
-        {
-            desiredVelocity = desiredVelocity.normalized * maxVelocity * (distance / slowingR);
-        }
-        else
-        {
-            desiredVelocity = desiredVelocity.normalized * maxVelocity;
-        }
+        //float distance = desiredVelocity.magnitude;
+        //if (distance < slowingR)
+        //{
+        //    desiredVelocity = desiredVelocity.normalized * maxVelocity * (distance / slowingR);
+        //}
+        //else
+        //{
+        //    desiredVelocity = desiredVelocity.normalized * maxVelocity;
+        //}
         Vector3 turn = desiredVelocity - velocity;
         turn = Vector3.ClampMagnitude(turn, maxForce);
         turn = turn / mass;
@@ -94,26 +96,15 @@ public abstract class Context : MonoBehaviour
         //newVelocity = Vector3.ClampMagnitude(newVelocity, maxSpeed);  
     }
 
-    public void Pursue(Vector3 target)
+    public void Pursue(Vector3 target) // Calculates Players future position and tries to reach that point
     {
         Vector3 distanceT = target - transform.position;
         float T = distanceT.magnitude / maxVelocity;
         futurePos = target + playerCode.move * T;
 
-        transform.position += velocity * Time.deltaTime;
-        //desiredVelocity = (target.transform.position - transform.position).normalized * maxVelocity;
+        transform.position += velocity * Time.deltaTime * anim.GetFloat("vCurve");
+        desiredVelocity = (target - transform.position).normalized * maxVelocity;
         desiredVelocity = futurePos - transform.position;
-
-        float distance = desiredVelocity.magnitude;
-
-        if (distance < slowingR)
-        {
-            desiredVelocity = desiredVelocity.normalized * maxVelocity * (distance / slowingR);
-        }
-        else
-        {
-            desiredVelocity = desiredVelocity.normalized * maxVelocity;
-        }
 
         Vector3 turn = (target - transform.position).normalized - velocity;
         turn = Vector3.ClampMagnitude(turn, maxForce);
@@ -124,7 +115,7 @@ public abstract class Context : MonoBehaviour
         //return pursue(futurePos);
     }
 
-    public Vector3 CollisionAvoidance()
+    public Vector3 CollisionAvoidance() // Avoids obstacles that are in the way while traversing
     {
         Vector3 ahead = transform.position + velocity.normalized * maxSeeAhead;
         Vector3 ahead2 = transform.position + velocity.normalized * maxSeeAhead * 0.5f;

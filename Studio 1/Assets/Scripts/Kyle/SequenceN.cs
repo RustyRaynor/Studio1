@@ -6,6 +6,7 @@ public class SequenceN : NodeBT
 {
     public override int UpdateNode(Context context)
     {
+
         for (int i = 0; i < nodeList.Count; i++)
         {
             int result = nodeList[i].UpdateNode(context);

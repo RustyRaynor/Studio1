@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChasingNode : Node
 {
-    // Start is called before the first frame update
+    
 
     // Update is called once per frame
     void Update()
@@ -18,7 +18,7 @@ public class ChasingNode : Node
         con.anim.SetFloat("Speed", 5);
         con.speed = con.runSpeed;
         Debug.Log("Chase");
-        if (Vector3.Distance(con.transform.position, con.player.transform.position) > 1f)
+        if (Vector3.Distance(con.transform.position, con.player.transform.position) > con.enemyRadius)
         {
             con.lastKnownLocation = con.player.transform.position;
             con.lastKnown = true;
