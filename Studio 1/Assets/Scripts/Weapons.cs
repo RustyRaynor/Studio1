@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
-    public int damage;
+    public int damage = 10;
 
     private void OnTriggerEnter(Collider other)
     {

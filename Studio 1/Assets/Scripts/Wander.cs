@@ -20,17 +20,16 @@ public class Wander : MonoBehaviour
         rb.GetComponent<Rigidbody>();
         displacementForce = new Vector3(0, 1, 0);
         angleChange = 30;
-        CalcCircleCenter();
-        rb.velocity = rb.velocity * speed * Time.deltaTime;
-        transform.position = transform.position + rb.velocity;
-        
     }
     
     void Update()
     {
         wanderAngle += (Random.Range(0f, 1f) * angleChange) - (angleChange * .5f);
         setAngle(displacementForce, wanderAngle);
+        rb.velocity = rb.velocity * speed * Time.deltaTime;
+        transform.position = transform.position + rb.velocity;
         WanderForce();
+        CalcCircleCenter();
     }
 
     public void CalcCircleCenter()

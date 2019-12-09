@@ -430,9 +430,8 @@ MonoBehaviour:
   health: 100
   lastHitTime: 0
   healRate: 1
-  trapDamage: 50
-  waitTime: 3
-  hitTime: 0
+  panel: {fileID: 0}
+  tempColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &274059686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1083,7 +1082,7 @@ PrefabInstance:
     - target: {fileID: 8707050584784368495, guid: 3faf0450c66193043912aef68162a9fa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.16
+      value: -14.6
       objectReference: {fileID: 0}
     - target: {fileID: 8707050584784368495, guid: 3faf0450c66193043912aef68162a9fa,
         type: 3}
@@ -1252,6 +1251,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 11d3168db6c51b74b897e70d0ddfd2d6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 11d3168db6c51b74b897e70d0ddfd2d6, type: 3}
+--- !u!4 &629810922 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 11d3168db6c51b74b897e70d0ddfd2d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 629810921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &631260430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1854,6 +1859,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969293779}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &980492870
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 980492871}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &980492871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980492870}
+  m_LocalRotation: {x: -0, y: 0.5550703, z: -0, w: 0.83180344}
+  m_LocalPosition: {x: -0.05, y: 0.344, z: 0.12}
+  m_LocalScale: {x: 0.52325886, y: 0.52325886, z: 0.52325886}
+  m_Children: []
+  m_Father: {fileID: 629810922}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1012537350
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2095,13 +2130,20 @@ MonoBehaviour:
   maxSeeAhead: 0
   maxAvoidanceForce: 0
   enemyRadius: 2
+  waitTimeRate: 3
+  waitTime: 0
+  walkSpeed: 3
+  runSpeed: 3
   dead: 0
+  lastKnown: 0
   velocity: {x: 0, y: 0, z: 0}
   desiredVelocity: {x: 0, y: 0, z: 0}
+  nonSpeedVelocity: {x: 0, y: 0, z: 0}
   avoidance: {x: 0, y: 0, z: 0}
   steering: {x: 0, y: 0, z: 0}
+  lastKnownLocation: {x: 0, y: 0, z: 0}
   player: {fileID: 268480137}
-  raycastPosition: {fileID: 0}
+  raycastPosition: {fileID: 980492870}
   playerCode: {fileID: 0}
 --- !u!95 &1318243604
 Animator:
@@ -3264,11 +3306,18 @@ MonoBehaviour:
   maxSeeAhead: 0
   maxAvoidanceForce: 0
   enemyRadius: 2
+  waitTimeRate: 3
+  waitTime: 0
+  walkSpeed: 0
+  runSpeed: 0
   dead: 0
+  lastKnown: 0
   velocity: {x: 0, y: 0, z: 0}
   desiredVelocity: {x: 0, y: 0, z: 0}
+  nonSpeedVelocity: {x: 0, y: 0, z: 0}
   avoidance: {x: 0, y: 0, z: 0}
   steering: {x: 0, y: 0, z: 0}
+  lastKnownLocation: {x: 0, y: 0, z: 0}
   player: {fileID: 268480137}
   raycastPosition: {fileID: 0}
   playerCode: {fileID: 0}

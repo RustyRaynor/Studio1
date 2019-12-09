@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class EnemyAbstract : MonoBehaviour
 {
-<<<<<<< HEAD
-
      public float speed;
      public int attackDamage;
      public float attackRate;
@@ -26,12 +24,7 @@ public abstract class EnemyAbstract : MonoBehaviour
      public Vector3[] patrolPosition = new Vector3[3];
      public Vector3[] patrol;
     
-=======
-    public float speed;
-    public int attackDamage;
-    public float attackRate;
-    public int health;
->>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
+
 
     public float maxForce;
     public float mass;
@@ -39,15 +32,12 @@ public abstract class EnemyAbstract : MonoBehaviour
     public float deathTime;
     public float maxSeeAhead;
     public float maxAvoidanceForce;
-<<<<<<< HEAD
     public float enemyRadius;
-=======
     public float waitTimeRate = 3f;
     public float waitTime;
 
     public float walkSpeed;
     public float runSpeed;
->>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
 
     public bool dead = false;
     public bool lastKnown;
@@ -57,24 +47,9 @@ public abstract class EnemyAbstract : MonoBehaviour
     public Vector3 nonSpeedVelocity;
     public Vector3 avoidance;
     public Vector3 steering;
-<<<<<<< HEAD
-   
-=======
     public Vector3 lastKnownLocation;
 
-    public int fieldOfView = 110;
-
-    public SphereCollider sphere;
-
-    public bool playerDetected = false;
-
-    public Collider publicCollider;
-
-    public Animator anim;
-
-    public Vector3[] patrolPosition = new Vector3[3];
-
->>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
+    
     public Node node;
 
     public GameObject player;
@@ -189,8 +164,6 @@ public abstract class EnemyAbstract : MonoBehaviour
         }
         return avoidance;
     }
-<<<<<<< HEAD
-
     public void EnableCollider()
     {
         weaponCollider.enabled = true;
@@ -201,14 +174,11 @@ public abstract class EnemyAbstract : MonoBehaviour
         weaponCollider.enabled = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "player")
-        {
-            health -= attackDamage;
-        }
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "player")
+    //    {
+    //        health -= attackDamage;
+    //    }
+    //}
 }
-=======
-}
->>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861

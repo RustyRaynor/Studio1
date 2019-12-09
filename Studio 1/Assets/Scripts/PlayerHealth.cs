@@ -18,13 +18,9 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerMovement>();
-<<<<<<< HEAD
-        hitTime = 0;
         health = 100;
-=======
         image = panel.GetComponent<Image>();
         tempColor = image.color;
->>>>>>> 4d9d41c8bfa8b2a7ff9a772dcc0d9ed05f2fd861
     }
 
     // Update is called once per frame
