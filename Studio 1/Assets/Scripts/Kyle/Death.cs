@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class DeathN : NodeBT
 {
-    bool dead = false;
-
-    public override int UpdateNode(Context context)
+    bool dying;
+    public override int UpdateNode(Context context) //Checks if health is 0, if so, then it starts the death process
     {
-        if (context.health <= 0)
-        {
-            context.StartCoroutine(DeathProcess());
-
-            if(dead)
-            {
-                context.isDead = true;
-            }
+       
+        if (context.health <= 0 && !dying)
+        { 
+            context.StartCoroutine(DeathProcess(context));
+            dying = true;
+            return 2;
         }
-        return 2;
+        else
+        {
+            return 0;
+        }
     }
 
-    IEnumerator DeathProcess()
+    IEnumerator DeathProcess(Context context)
     {
         yield return new WaitForSeconds(10.0f);
-        dead = true;
+        context.isDead = true;
     }
 }

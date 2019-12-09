@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SDectN : NodeBT
 {
-    public override int UpdateNode(Context context)
+    public override int UpdateNode(Context context) //Detects if player can be heard or not
     {
+        Debug.Log("sounddetect");
         if (context.playerDetected == true)
         {
             if (context.playerCode.soundMade >= 5)
