@@ -16,6 +16,7 @@ public class ConversationScript : MonoBehaviour
     public GameObject GameMan;
 
     GameManager gameManager;
+    Coroutine x;
 
     bool playerIn = false;
 
@@ -48,7 +49,7 @@ public class ConversationScript : MonoBehaviour
                 {
                     line = secondQuestLine;
                 }
-                StartCoroutine(Separate());
+                x = StartCoroutine(Seperate());
             }
         }
         else
@@ -62,6 +63,8 @@ public class ConversationScript : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    StopCoroutine(x);
+
                     if (gameManager.questObjective1 == true)
                     {
                         if (line < secondQuestLine - 1)
@@ -69,7 +72,7 @@ public class ConversationScript : MonoBehaviour
                             
                                 line++;
                                 convo.text = "";
-                                StartCoroutine(Separate());
+                                x = StartCoroutine(Seperate());
                         }
                         else
                         {
@@ -84,9 +87,8 @@ public class ConversationScript : MonoBehaviour
                         if (line < sentences.Length - 1)
                         {
                               line++;
-                            StopCoroutine(Separate());
                               convo.text = "";
-                              StartCoroutine(Separate());
+                              x = StartCoroutine(Seperate());
                         }
                         else
                         {
@@ -105,7 +107,7 @@ public class ConversationScript : MonoBehaviour
 
                     line++;
                     convo.text = "";
-                    StartCoroutine(Separate());
+                    x = StartCoroutine(Seperate());
 
                 }
                 else
@@ -118,7 +120,7 @@ public class ConversationScript : MonoBehaviour
         }
     }
 
-        IEnumerator Separate()
+        IEnumerator Seperate()
         {
             foreach (char letter in sentences[line].ToCharArray())
             {
