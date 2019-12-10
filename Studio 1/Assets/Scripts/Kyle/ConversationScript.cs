@@ -70,7 +70,6 @@ public class ConversationScript : MonoBehaviour
                                 line++;
                                 convo.text = "";
                                 StartCoroutine(Separate());
-                            
                         }
                         else
                         {
@@ -85,6 +84,7 @@ public class ConversationScript : MonoBehaviour
                         if (line < sentences.Length - 1)
                         {
                               line++;
+                            StopCoroutine(Separate());
                               convo.text = "";
                               StartCoroutine(Separate());
                         }
@@ -144,5 +144,4 @@ public class ConversationScript : MonoBehaviour
                 UI.SetActive(false);
             }
         }
-
-    }
+}

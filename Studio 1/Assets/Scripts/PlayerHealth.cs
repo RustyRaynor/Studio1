@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(health < 100)
         {
-           //    health += 1;
+           health += 1;
         }
         yield return new WaitForSeconds(1f);
     }
