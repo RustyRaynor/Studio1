@@ -526,11 +526,130 @@ MonoBehaviour:
   - {x: 10, y: 5.100366e-17, z: 10}
   - {x: 20, y: 5.100366e-17, z: 10}
   player: {fileID: 1728865602}
-  raycastPosition: {fileID: 1431269126}
+  raycastPosition: {fileID: 1034324163}
   playerCode: {fileID: 1728865603}
 --- !u!95 &522838086 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 7c9540077739d5747ae83c4a85120364,
+    type: 3}
+  m_PrefabInstance: {fileID: 1308592809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &522838087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522838081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d2409b5f5a57a48ab443382314457e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstep:
+  - {fileID: 8300000, guid: d2fe94b5c9f1b1648b97005eda34a1a4, type: 3}
+  - {fileID: 8300000, guid: 565caea305da6284793639353574c584, type: 3}
+  - {fileID: 8300000, guid: 4f6f28303d813d2409487af7e50dcdb3, type: 3}
+  - {fileID: 8300000, guid: d25f4230d53b9014c9057b5e6d2e8efe, type: 3}
+--- !u!82 &522838088
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522838081}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.385
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &522838089 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 7c9540077739d5747ae83c4a85120364,
     type: 3}
   m_PrefabInstance: {fileID: 1308592809}
   m_PrefabAsset: {fileID: 0}
@@ -1261,7 +1380,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &998681646
 GameObject:
@@ -1430,12 +1549,13 @@ MonoBehaviour:
   name: Raynor
   sentences:
   - Hello
+  secondQuestLine: 0
   convo: {fileID: 1839356013}
   nameText: {fileID: 592922467}
-  player: {fileID: 1728865602}
+  InteractingUI: {fileID: 0}
+  GameMan: {fileID: 0}
   UI: {fileID: 1574054767}
-  button: {fileID: 724516217}
-  interactDistance: 5
+  questGiver: 0
 --- !u!114 &998681655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1448,14 +1568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be99e59729d15104c912a40fb785eb67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInteractable: 0
-  name: 
-  sentences: []
-  convo: {fileID: 0}
-  nameText: {fileID: 0}
-  UI: {fileID: 0}
-  button: {fileID: 0}
-  interactDistance: 5
 --- !u!114 &998681656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,7 +1580,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146058ad368775e448f8ffc7ce370636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1728865602}
+--- !u!1 &1034324163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034324164}
+  m_Layer: 0
+  m_Name: RayCast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1034324164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034324163}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.004, y: 1.014, z: -0.015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 522838089}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1072456740
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,6 +1751,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116585799}
   m_CullTransparentMesh: 0
+--- !u!1 &1132589666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2041320227}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1132589667}
+  m_Layer: 0
+  m_Name: Test for Unity (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1132589667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2041320227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132589666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1308592809
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1622,6 +1793,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeleFirstDraftAni
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 7c9540077739d5747ae83c4a85120364,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8a773d35ce6ac4b4b833dfe3f5476822, type: 2}
     - target: {fileID: -9179801446121358597, guid: 7c9540077739d5747ae83c4a85120364,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1937,11 +2113,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -121.729485
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 7c9540077739d5747ae83c4a85120364,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8a773d35ce6ac4b4b833dfe3f5476822, type: 2}
     - target: {fileID: -6030062460738406773, guid: 7c9540077739d5747ae83c4a85120364,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2160,7 +2331,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 7c9540077739d5747ae83c4a85120364,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7c9540077739d5747ae83c4a85120364,
         type: 3}
@@ -3402,6 +3573,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.0000001680599
       objectReference: {fileID: 0}
+    - target: {fileID: 651621871118580100, guid: 7c9540077739d5747ae83c4a85120364,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8fcaf1fe0ae5fa4fbc9a15a4039a038, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c9540077739d5747ae83c4a85120364, type: 3}
 --- !u!1 &1431269126
@@ -3500,6 +3676,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1567793263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4444802767092952970, guid: 3faf0450c66193043912aef68162a9fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1962077301}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &1567793265
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567793263}
+  m_Enabled: 1
 --- !u!1 &1574054767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,12 +3927,13 @@ MonoBehaviour:
   - Hey
   - Whats up
   - How are youi
+  secondQuestLine: 0
   convo: {fileID: 1839356013}
   nameText: {fileID: 592922467}
-  player: {fileID: 1728865602}
+  InteractingUI: {fileID: 0}
+  GameMan: {fileID: 0}
   UI: {fileID: 1574054767}
-  button: {fileID: 724516217}
-  interactDistance: 5
+  questGiver: 0
 --- !u!114 &1611892933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3768,17 +3959,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be99e59729d15104c912a40fb785eb67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInteractable: 0
-  name: Kyle
-  sentences:
-  - Hey
-  - whats up
-  - how are you
-  convo: {fileID: 1839356013}
-  nameText: {fileID: 592922467}
-  UI: {fileID: 1574054767}
-  button: {fileID: 724516217}
-  interactDistance: 5
 --- !u!1 &1680737812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3900,6 +4080,8 @@ MonoBehaviour:
   health: 100
   lastHitTime: 0
   healRate: 1
+  panel: {fileID: 0}
+  tempColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1758706983
 GameObject:
   m_ObjectHideFlags: 0
@@ -4229,6 +4411,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5660727344126165372, guid: 3faf0450c66193043912aef68162a9fa,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8707050584784368495, guid: 3faf0450c66193043912aef68162a9fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4426,12 +4613,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: 
   sentences: []
+  secondQuestLine: 0
   convo: {fileID: 1839356013}
   nameText: {fileID: 592922467}
-  player: {fileID: 688522431}
+  InteractingUI: {fileID: 0}
+  GameMan: {fileID: 0}
   UI: {fileID: 1574054767}
-  button: {fileID: 0}
-  interactDistance: 5
+  questGiver: 0
 --- !u!4 &2082855375
 Transform:
   m_ObjectHideFlags: 0

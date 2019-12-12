@@ -10,6 +10,7 @@ public abstract class Context : MonoBehaviour
     public float maxForce;
     public float maxVelocity;
     public float mass;
+    public float enemyR;
     //public float slowingR;
     public float deathTime;
     public float maxSeeAhead;
