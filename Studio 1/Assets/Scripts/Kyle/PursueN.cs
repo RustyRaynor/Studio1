@@ -8,11 +8,9 @@ public class PursueN : NodeBT
     {
         float distance = Vector3.Distance(context.player.transform.position, context.transform.position);
 
-        if (distance > context.enemyR)
+        if (distance > 2.5f)
         {
             context.Pursue(context.player.transform.position);
-            context.transform.LookAt(context.player.transform.position);
-            Debug.Log("Chasing");
             return 1;
         }
         return 2;

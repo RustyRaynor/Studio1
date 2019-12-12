@@ -36,6 +36,10 @@ public class SkeletonAI : Context
 
         selector1.nodeList.Add(patrol);
 
+        //sequence1.nodeList.Add(death);
+
+        
+
         sequence2.nodeList.Add(selector2);
         sequence2.nodeList.Add(pursue);
         sequence2.nodeList.Add(attack);

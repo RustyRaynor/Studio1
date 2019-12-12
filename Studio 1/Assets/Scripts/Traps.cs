@@ -6,7 +6,6 @@ public class Traps : MonoBehaviour
 {
     PlayerHealth player;
     EnemyAbstract enemy;
-    Context context;
 
     Animator anim;
 
@@ -42,16 +41,10 @@ public class Traps : MonoBehaviour
                 player.health -= 20;
                 player.lastHitTime = Time.time;
             }
-            else if (other.tag == "Enemy" && other.GetComponent<EnemyAbstract>())
+            else if (other.tag == "Enemy")
             {
                 enemy = other.GetComponent<EnemyAbstract>();
                 enemy.health -= 100;
-                Debug.Log("Hit");
-            }
-            else if (other.tag == "Enemy" && other.GetComponent<Context>())
-            {
-                context = other.GetComponent<Context>();
-                context.health -= 100;
                 Debug.Log("Hit");
             }
         }
