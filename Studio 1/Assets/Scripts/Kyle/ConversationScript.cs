@@ -44,17 +44,22 @@ public class ConversationScript : MonoBehaviour
                 UI.SetActive(true);
                 interacting = true;
                 playerIn = false;
+                nameText.text = name;
                 convo.text = "";
-                if (gameManager.questObjective1 == false)
+                if (questGiver == true)
                 {
-                    line = secondQuestLine;
+                    if (gameManager.questObjective1 == false)
+                    {
+                        line = secondQuestLine;
+                    }
+                }
+                else
+                {
+                    line = 0;
                 }
                 x = StartCoroutine(Seperate());
+                InteractingUI.SetActive(false);
             }
-        }
-        else
-        {
-            InteractingUI.SetActive(false);
         }
 
         if (interacting == true)
@@ -102,19 +107,23 @@ public class ConversationScript : MonoBehaviour
             }
             else
             {
-                if (line < sentences.Length - 1)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    StopCoroutine(x);
+                    if (line < sentences.Length - 1)
+                    {
+                        line++;
+                        convo.text = "";
+                        x = StartCoroutine(Seperate());
 
-                    line++;
-                    convo.text = "";
-                    x = StartCoroutine(Seperate());
-
-                }
-                else
-                {
-                    UI.SetActive(false);
-                    interacting = false;
-                    line = 0;
+                    }
+                    else
+                    {
+                        Debug.Log("Nonquest");
+                        UI.SetActive(false);
+                        interacting = false;
+                        line = 0;
+                    }
                 }
             }
         }
@@ -144,6 +153,7 @@ public class ConversationScript : MonoBehaviour
             {
                 playerIn = false;
                 UI.SetActive(false);
+                InteractingUI.SetActive(false);
             }
         }
 }

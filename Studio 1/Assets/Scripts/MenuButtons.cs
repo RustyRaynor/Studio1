@@ -8,6 +8,11 @@ public class MenuButtons : MonoBehaviour
    public GameObject mainMenu;
    public GameObject credits;
 
+    private void Update()
+    {
+        Time.timeScale = 1;
+    }
+
     public void Play()
     {
         SceneManager.LoadScene(1);
@@ -23,5 +28,10 @@ public class MenuButtons : MonoBehaviour
     {
         mainMenu.SetActive(true);
         credits.SetActive(false);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

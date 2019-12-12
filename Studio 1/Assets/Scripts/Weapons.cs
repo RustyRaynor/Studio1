@@ -11,6 +11,7 @@ public class Weapons : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerHealth healthComponent = other.gameObject.GetComponent<PlayerHealth>();
+            healthComponent.lastHitTime = Time.time;
             healthComponent.health -= damage;
         }
     }
