@@ -664,7 +664,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 893fe528bbfba324cbfd48af5eb861b6,
+  m_Motion: {fileID: -203655887218126122, guid: fab0c490fbd7b0643b497a1ee3207227,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -836,6 +836,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: dead
     m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: walkCurve
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0

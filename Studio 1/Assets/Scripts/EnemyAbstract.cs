@@ -15,8 +15,10 @@ public abstract class EnemyAbstract : MonoBehaviour
      public SphereCollider sphere;
     
      public bool playerDetected = false;
-    
-     public Collider publicCollider;
+
+    protected float walkCurve;
+
+    public Collider publicCollider;
     public Collider weaponCollider;
     
      public Animator anim;
@@ -35,6 +37,7 @@ public abstract class EnemyAbstract : MonoBehaviour
     public float enemyRadius;
     public float waitTimeRate = 3f;
     public float waitTime;
+    public float lastAttack;
 
     public float walkSpeed;
     public float runSpeed;
@@ -101,6 +104,7 @@ public abstract class EnemyAbstract : MonoBehaviour
 
     public void Move(Vector3 target)
     {
+        walkCurve = anim.GetFloat("walkCurve");
         steering = steering * 0;
         steering = Seek(target);
         steering = steering + CollisionAvoidance();

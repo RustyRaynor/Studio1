@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cameraRot;
 
     public float speed;
+    float walkCurve;
     float gravity = -9.81f;
 
     public int soundMade;
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        walkCurve = anim.GetFloat("walkCurve");
         switch (state)
         {
             case State.alive:
