@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int health ;
+    public int health;
     public float lastHitTime;
     public float healRate = 1f;
 
