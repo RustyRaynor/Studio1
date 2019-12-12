@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Context : MonoBehaviour
 {
-    public int attackDamage;
+    public int damage;
     public int health;
 
     public float maxForce;
@@ -15,6 +15,8 @@ public abstract class Context : MonoBehaviour
     public float deathTime;
     public float maxSeeAhead;
     public float maxAvoidanceForce;
+    public float waitTime;
+    public float waitTimeR = 2.5f;
 
     public Vector3 velocity;
     public Vector3 desiredVelocity;
@@ -33,7 +35,8 @@ public abstract class Context : MonoBehaviour
 
     public Animator anim;
 
-    public Vector3[] positions;
+    public Vector3[] patrolPosition = new Vector3[3];
+    public Vector3[] patrol;
 
     public NodeBT nodebt;
 

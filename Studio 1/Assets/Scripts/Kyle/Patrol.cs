@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class PatrolNode : NodeBT
 {
-    public int currentDes;
+    public int position = 0;
 
-    public override int UpdateNode(Context con)
+    public override int UpdateNode(Context context)
     {
-        Debug.Log("Patrolling");
-        con.Seek(con.positions[currentDes]);
-        con.transform.LookAt(con.positions[currentDes]);
-        con.anim.SetBool("isWalking", true);
+        //Debug.Log("Patrolling");
+        //context.Seek(context.positions[currentDes]);
+        //context.transform.LookAt(context.positions[currentDes]);
+        //context.anim.SetBool("isWalking", true);
 
-        if (con.positions.Length > 0)
+        Vector3 distance = context.patrolPosition[position] - context.transform.position;
+        Vector3 distanceLeft = distance.normalized;
+
+        if (distance.magnitude <= distanceLeft.magnitude)
         {
-            if (con.transform.position == con.positions[currentDes])
+            context.anim.SetBool("walking", false);
+            if (Time.time - context.waitTime >= context.waitTimeR)
             {
-                currentDes++;
-            }
-            if (currentDes >= con.positions.Length)
-            {
-               currentDes = 0;
+                position++;
+                if (position == context.patrolPosition.Length)
+                {
+                    position = 0;
+                }
             }
         }
-        return 1;      
+        else
+        {
+            context.anim.SetBool("isWalking", true);
+            context.Seek(context.patrolPosition[position]);
+            context.waitTime = Time.time;
+            context.transform.LookAt(context.patrolPosition[position]);
+        }
+        return 1;  
     }
 }
